@@ -102,6 +102,6 @@ int qsortTest( int argc, char * argv[] )
 
 int main( int argc, char * argv[] )
 {
-    return qsortTest( arc, argv );
+    return qsortTest( argc, argv );
 }
 #endif

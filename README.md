@@ -10,7 +10,7 @@ as published by the Free Software Foundation; either version 2 of the License, o
 
 ## PBL - Introduction
 
-PBL is an LGPL open source C library of functions that can be used in a C
+PBL is an MIT License open source C library of functions that can be used in a C
 or C++ project. PBL is highly portable and compiles warning free on
 Linux gcc, MAC OS X and Windows Microsoft Visual Studio.
 
@@ -220,7 +220,6 @@ In order to use [**PriorityQueue\<T\>**][**PriorityQueue<T\>**] copy [**Priority
 copyright (C) 2001 - 2015 by Peter Graf
 
   [The GNU General Public License]: http://www.gnu.org/licenses/licenses.html#GPL
-  [The GNU Lesser General Public License]: http://www.gnu.org/licenses/licenses.html#LGPL
   [**PBL BASE**]: http://www.mission-base.com/peter/source/pbl/doc/base.html
   [**PBL COLLECTION**]: http://www.mission-base.com/peter/source/pbl/doc/collection.html
   [**PBL LIST**]: http://www.mission-base.com/peter/source/pbl/doc/list.html

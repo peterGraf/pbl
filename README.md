@@ -2,9 +2,7 @@
 
 * * * * *
 
-The library PBL is published under 
-[The GNU Lesser General Public License][]
-as published by the Free Software Foundation; either version 2.1 of the License, or (at your option) any later version.
+The library PBL is published under the MIT License, see [https://opensource.org/licenses/MIT].
 
 The test cases, which are not directly part of the library, are published under 
 [The GNU General Public License][] 

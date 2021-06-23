@@ -31,7 +31,7 @@ static int compare( const void *left, const void *right )
     {
         printf( "compare %p, %p rc -1\n", leftPointer, rightPointer);
 
-        return ( -1 );
+        return -1;
     }
 
     if( leftPointer == rightPointer )
@@ -43,7 +43,7 @@ static int compare( const void *left, const void *right )
 
     printf( "compare %p, %p rc 1\n", leftPointer, rightPointer);
 
-    return ( 1 );
+    return 1;
 }
 
 int qsortTest( int argc, char * argv[] )
@@ -102,6 +102,6 @@ int qsortTest( int argc, char * argv[] )
 
 int main( int argc, char * argv[] )
 {
-    return qsortTest( argc, argv );
+    return qsortTest( arc, argv );
 }
 #endif

@@ -15,7 +15,7 @@ int hash1( const unsigned char * key, size_t keylen )
         }
     }
 
-    return( ( ret & 0x7fffffff ) % PBL_HASHTABLE_SIZE );
+    return ( ret & 0x7fffffff ) % PBL_HASHTABLE_SIZE;
 }
 
 /*
@@ -33,7 +33,7 @@ int hash2( const unsigned char * key, size_t keylen )
 	ret ^= ( (ret << 5) + *key + (ret >> 2) );
     }
 
-    return( ( ret & 0x7fffffff ) % PBL_HASHTABLE_SIZE );
+    return ( ret & 0x7fffffff ) % PBL_HASHTABLE_SIZE;
 }
 
 /*
@@ -146,7 +146,7 @@ unsigned long length
    mix(a,b,c);
 
    /*-------------------------------------------- report the result */
-   return( ( c & 0x7fffffff ) % PBL_HASHTABLE_SIZE );
+   return ( c & 0x7fffffff ) % PBL_HASHTABLE_SIZE;
 }
 
 unsigned long hash4(
@@ -179,7 +179,7 @@ unsigned long hash4(
         }
     }
 
-    return( val & 0x7fffffff );
+    return val & 0x7fffffff;
 }
 
 typedef struct PBLBLOCKREF_s

@@ -24,6 +24,9 @@
    please see: http://www.mission-base.com/.
 
     $Log: pblListTest.c,v $
+    Revision 1.31  2021/06/23 13:39:53  peter
+    Cleanup of _WIN32 usage
+
     Revision 1.30  2021/06/12 11:18:27  peter
     Synchronizing with github version
 
@@ -35,7 +38,7 @@
 /*
  * make sure "strings <exe> | grep Id | sort -u" shows the source file versions
  */
-char* pblListTest_c_id = "$Id: pblListTest.c,v 1.30 2021/06/12 11:18:27 peter Exp $";
+char* pblListTest_c_id = "$Id: pblListTest.c,v 1.31 2021/06/23 13:39:53 peter Exp $";
 
 #include <stdio.h>
 #include <string.h>

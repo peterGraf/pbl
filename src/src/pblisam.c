@@ -3,55 +3,44 @@
 
  Copyright (C) 2002 - 2007   Peter Graf
 
-   This file is part of PBL - The Program Base Library.
-   PBL is free software.
+ This file is part of PBL - The Program Base Library.
+ PBL is free software.
 
-    This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Lesser General Public
-    License as published by the Free Software Foundation; either
-    version 2.1 of the License, or (at your option) any later version.
+    MIT License
 
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Lesser General Public License for more details.
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
 
-    You should have received a copy of the GNU Lesser General Public
-    License along with this library; if not, write to the Free Software
-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
 
-   For more information on the Program Base Library or Peter Graf,
-   please see: http://www.mission-base.com/.
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+
+ For more information on the Program Base Library or Peter Graf,
+ please see: https://www.mission-base.com/.
 
     $Log: pblisam.c,v $
+    Revision 1.26  2021/06/23 14:32:49  peter
+    Switch to MIT license
+
     Revision 1.25  2021/06/12 11:18:26  peter
-    Synchronizing with github version
-
-    Revision 1.24  2018/03/10 18:00:45  peter
-    Cleanup of unneeded parentheses
-
-    Revision 1.15  2009/03/08 20:56:50  peter
-    port to gcc (Ubuntu 4.3.2-1ubuntu12) 4.3.2.
-    Exposing the hash set and tree set interfaces.
-
-    Revision 1.14  2009/02/03 16:40:14  peter
-    PBL vesion 1.04, optimizations,
-    MAC OS X port, port to Microsoft Visual C++ 2008 Express Edition,
-    exposing the array list and the linked list interface
-
-
-    Revision 1.2  2003/02/19 22:19:39  peter
-    fixed a bug related to finding non existing
-    duplicated keys
-
-    bug was reported by Csaba P�los
 
 */
 
 /*
  * make sure "strings <exe> | grep Id | sort -u" shows the source file versions
  */
-char * pblisam_c_id = "$Id: pblisam.c,v 1.25 2021/06/12 11:18:26 peter Exp $";
+char * pblisam_c_id = "$Id: pblisam.c,v 1.26 2021/06/23 14:32:49 peter Exp $";
 
 #include <stdio.h>
 #include <stdlib.h>

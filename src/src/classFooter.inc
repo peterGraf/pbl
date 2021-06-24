@@ -12,5 +12,8 @@
 </ul>
 </DL>
 <hr>
-Copyright(C) 2003 - 2015 <a href="http://www.mission-base.com/peter/">Peter Graf</a>, this software is distributed under the
-<a href="http://www.gnu.org/">GNU</a> Lesser General Public License.
+Copyright(C) 2003 - 2015 <a href="http://www.mission-base.com/peter/">Peter Graf</a>, 
+this software is distributed under the
+<a href="https://opensource.org/licenses/MIT"
+name="TOCMIT" target="new">MIT License</a>.
+

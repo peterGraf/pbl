@@ -30,6 +30,9 @@
  please see: https://www.mission-base.com/.
 
 $Log: pblCgi.c,v $
+Revision 1.56  2021/08/12 21:47:27  peter
+Added a missing ;
+
 Revision 1.55  2021/06/23 14:33:53  peter
 Switch to MIT license
 
@@ -38,7 +41,7 @@ Switch to MIT license
  /*
   * Make sure "strings <exe> | grep Id | sort -u" shows the source file versions
   */
-char* pblCgi_c_id = "$Id: pblCgi.c,v 1.55 2021/06/23 14:33:53 peter Exp $";
+char* pblCgi_c_id = "$Id: pblCgi.c,v 1.56 2021/08/12 21:47:27 peter Exp $";
 
 #include <stdio.h>
 #include <memory.h>
@@ -216,13 +219,13 @@ PblMap* pblCgiFileToMap(PblMap* map, char* filePath)
 		if (pblMapGetStr(map, key))
 		{
 			// Multiple lines are comma separated
-			char* newValue = pbl_mem2dup(NULL, ", ", 2, value, strlen(value) + 1);
+			char* newValue = pbl_mem2dup(tag, ", ", 2, value, strlen(value) + 1);
 			int rc = pblMapAppendStrStr(map, key, newValue);
-			PBL_FREE(newValue)
-				if (rc < 0)
-				{
-					pblCgiExitOnError("%s: Failed to append a string, pbl_errno = %d, message='%s'\n", tag, pbl_errno, pbl_errstr);
-				}
+			PBL_FREE(newValue);
+			if (rc < 0)
+			{
+				pblCgiExitOnError("%s: Failed to append a string, pbl_errno = %d, message='%s'\n", tag, pbl_errno, pbl_errstr);
+			}
 		}
 		else if (pblMapAddStrStr(map, key, value) < 0)
 		{

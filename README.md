@@ -17,7 +17,7 @@ Linux gcc, MAC OS X and Windows Microsoft Visual Studio.
 The code of the PBL library includes the following modules:
 
 ###[**PBL BASE**][] - C Base Functions
-Some base functions, see **pbl\_*** functions,
+Some base functions, see **pbl\_*** functions.
 
 ###[**PBL LIST**][] - C Array-List and Linked-List
 An open source C implementation of array lists and

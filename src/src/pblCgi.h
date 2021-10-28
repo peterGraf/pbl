@@ -32,10 +32,10 @@
  please see: https://www.mission-base.com/.
 
 $Log: pblCgi.h,v $
-Revision 1.35  2021/06/23 14:32:50  peter
-Switch to MIT license
+Revision 1.38  2021/10/28 20:16:15  peter
+Added pblCgiStrIsNullOrEmpty()
 
-Revision 1.34  2021/06/12 11:18:27  peter
+Revision 1.37  2021/09/20 22:55:03  peter
 
  */
 
@@ -131,9 +131,12 @@ extern "C"
 	extern int pblCgiStrArrayContains(char** array, char* string);
 	extern char* pblCgiStrNCpy(char* dest, char* string, size_t n);
 	extern char* pblCgiStrTrim(char* string);
+	extern int pblCgiStrIsNullOrEmpty(char* string);
 	extern int pblCgiStrIsNullOrWhiteSpace(char* string);
 	extern char* pblCgiStrRangeDup(char* start, char* end);
 	extern char* pblCgiStrDup(char* string);
+	extern int pblCgiStrStartsWith(char* string, char* start);
+	extern int pblCgiStrEndsWith(char* string, char* end);
 	extern int pblCgiStrEquals(char* s1, char* s2);
 	extern int pblCgiStrCmp(char* s1, char* s2);
 	extern char* pblCgiStrCat(char* s1, char* s2);

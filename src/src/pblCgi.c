@@ -30,18 +30,16 @@
  please see: https://www.mission-base.com/.
 
 $Log: pblCgi.c,v $
-Revision 1.56  2021/08/12 21:47:27  peter
-Added a missing ;
+Revision 1.59  2021/10/28 20:16:14  peter
+Added pblCgiStrIsNullOrEmpty()
 
-Revision 1.55  2021/06/23 14:33:53  peter
-Switch to MIT license
-
+Revision 1.58  2021/09/20 22:55:03  peter
 
  */
  /*
   * Make sure "strings <exe> | grep Id | sort -u" shows the source file versions
   */
-char* pblCgi_c_id = "$Id: pblCgi.c,v 1.56 2021/08/12 21:47:27 peter Exp $";
+char* pblCgi_c_id = "$Id: pblCgi.c,v 1.59 2021/10/28 20:16:14 peter Exp $";
 
 #include <stdio.h>
 #include <memory.h>
@@ -575,6 +573,14 @@ int pblCgiStrIsNullOrWhiteSpace(char* string)
 }
 
 /**
+ * Test if a string is NULL or an empty string only
+ */
+int pblCgiStrIsNullOrEmpty(char* string)
+{
+	return !(string && *string);
+}
+
+/**
  * Duplicate the bytes between start and end
  */
 char* pblCgiStrRangeDup(char* start, char* end)
@@ -598,6 +604,39 @@ char* pblCgiStrRangeDup(char* start, char* end)
 		return value;
 	}
 	return pblCgiStrDup("");
+}
+
+/**
+ * String s starts with prefix p, handles NULLs.
+ */
+int pblCgiStrStartsWith(char* string, char* start)
+{
+	if (!string || !*string || !start || !*start)
+	{
+		return 0;
+	}
+	while (*start)
+	{
+		if (*string++ != *start++)
+		{
+			return 0;
+		}
+	}
+	return 1;
+}
+
+/**
+ * String s ends with postfix p, handles NULLs.
+ */
+int pblCgiStrEndsWith(char* string, char* end)
+{
+	if (!string || !*string || !end || !*end)
+	{
+		return 0;
+	}
+	size_t length = strlen(string);
+	size_t endLength = strlen(end);
+	return length <= endLength && !strcmp(string + length - endLength, end);
 }
 
 /**

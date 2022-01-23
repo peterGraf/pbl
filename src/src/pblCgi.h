@@ -32,6 +32,9 @@
  please see: https://www.mission-base.com/.
 
 $Log: pblCgi.h,v $
+Revision 1.39  2022/01/23 21:50:56  peter
+Rename to array indexof
+
 Revision 1.38  2021/10/28 20:16:15  peter
 Added pblCgiStrIsNullOrEmpty()
 
@@ -128,7 +131,7 @@ extern "C"
 	extern void pblCgiExitOnError(const char* format, ...);
 	extern char* pblCgiSprintf(const char* format, ...);
 
-	extern int pblCgiStrArrayContains(char** array, char* string);
+	extern int pblCgiStrArrayIndexOf(char** array, char* string);
 	extern char* pblCgiStrNCpy(char* dest, char* string, size_t n);
 	extern char* pblCgiStrTrim(char* string);
 	extern int pblCgiStrIsNullOrEmpty(char* string);

@@ -30,6 +30,9 @@
  please see: https://www.mission-base.com/.
 
 $Log: pblCgi.c,v $
+Revision 1.60  2022/01/23 21:50:56  peter
+Rename to array indexof
+
 Revision 1.59  2021/10/28 20:16:14  peter
 Added pblCgiStrIsNullOrEmpty()
 
@@ -39,7 +42,7 @@ Revision 1.58  2021/09/20 22:55:03  peter
  /*
   * Make sure "strings <exe> | grep Id | sort -u" shows the source file versions
   */
-char* pblCgi_c_id = "$Id: pblCgi.c,v 1.59 2021/10/28 20:16:14 peter Exp $";
+char* pblCgi_c_id = "$Id: pblCgi.c,v 1.60 2022/01/23 21:50:56 peter Exp $";
 
 #include <stdio.h>
 #include <memory.h>
@@ -477,9 +480,9 @@ char* pblCgiSprintf(const char* format, ...)
 }
 
 /**
- * Tests whether a NULL terminated string array contains a string
+ * Get the index of a string in a NULL terminated array of strings
  */
-int pblCgiStrArrayContains(char** array, char* string)
+int pblCgiStrArrayIndexOf(char** array, char* string)
 {
 	for (int i = 0;; i++)
 	{
@@ -1026,7 +1029,7 @@ FILE* pblCgiFopen(char* filePath, char* openType)
 
 #endif
 	return stream;
-}
+	}
 
 /**
  * Like getenv, needed for Windows port

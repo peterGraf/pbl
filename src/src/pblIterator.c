@@ -31,17 +31,18 @@
  please see: https://www.mission-base.com/.
 
  $Log: pblIterator.c,v $
+ Revision 1.17  2022/06/28 22:07:43  peter
+ Reformatting and clean up
+
  Revision 1.16  2021/06/23 14:32:48  peter
  Switch to MIT license
-
- Revision 1.15  2021/06/12 21:06:46  peter
 
  */
 
  /*
   * Make sure "strings <exe> | grep Id | sort -u" shows the source file versions
   */
-char* pblIterator_c_id = "$Id: pblIterator.c,v 1.16 2021/06/23 14:32:48 peter Exp $";
+char* pblIterator_c_id = "$Id: pblIterator.c,v 1.17 2022/06/28 22:07:43 peter Exp $";
 
 char* PblIteratorMagic = "PblIteratorMagic";
 
@@ -124,15 +125,13 @@ PblIterator* pblIteratorNew( /*                                             */
 	PblCollection* collection /** The collection to create the iterator for */
 )
 {
-	PblIterator* iterator;
-
 	if (!PBL_COLLECTION_IS_COLLECTION(collection))
 	{
 		pbl_errno = PBL_ERROR_PARAM_COLLECTION;
 		return NULL;
 	}
 
-	iterator = (PblIterator*)pbl_malloc("pblIteratorNew", sizeof(PblIterator));
+	PblIterator* iterator = (PblIterator*)pbl_malloc("pblIteratorNew", sizeof(PblIterator));
 	if (!iterator)
 	{
 		return NULL;
@@ -143,7 +142,6 @@ PblIterator* pblIteratorNew( /*                                             */
 		PBL_FREE(iterator);
 		return NULL;
 	}
-
 	return (PblIterator*)iterator;
 }
 
@@ -209,7 +207,6 @@ int pblIteratorInit( /*                                                      */
 	{
 		iterator->next = NULL;
 	}
-
 	return 0;
 }
 
@@ -243,15 +240,13 @@ PblIterator* pblIteratorReverseNew( /*                                      */
 	PblCollection* collection /** The collection to create the iterator for */
 )
 {
-	PblIterator* iterator;
-
 	if (!PBL_COLLECTION_IS_COLLECTION(collection))
 	{
 		pbl_errno = PBL_ERROR_PARAM_COLLECTION;
 		return NULL;
 	}
 
-	iterator = (PblIterator*)pbl_malloc("pblIteratorReverseNew", sizeof(PblIterator));
+	PblIterator* iterator = (PblIterator*)pbl_malloc("pblIteratorReverseNew", sizeof(PblIterator));
 	if (!iterator)
 	{
 		return NULL;
@@ -262,7 +257,6 @@ PblIterator* pblIteratorReverseNew( /*                                      */
 		PBL_FREE(iterator);
 		return NULL;
 	}
-
 	return (PblIterator*)iterator;
 }
 
@@ -331,7 +325,6 @@ int pblIteratorReverseInit( /*                                               */
 	{
 		iterator->prev = NULL;
 	}
-
 	return 0;
 }
 
@@ -424,7 +417,6 @@ void* pblIteratorNext( /*                                                 */
 	{
 		return (void*)-1;
 	}
-
 	if (!hasNext)
 	{
 		pbl_errno = PBL_ERROR_NOT_FOUND;
@@ -689,9 +681,7 @@ int pblIteratorAdd( /*                                            */
 
 	iterator->lastIndexReturned = -1;
 	iterator->current = NULL;
-
 	iterator->index++;
-
 	iterator->changeCounter = list->changeCounter;
 	return list->size;
 }
@@ -806,9 +796,7 @@ int pblIteratorRemove( /*                                                  */
 
 	iterator->current = NULL;
 	iterator->lastIndexReturned = -1;
-
 	iterator->changeCounter = iterator->collection->changeCounter;
-
 	return iterator->collection->size;
 }
 
@@ -869,10 +857,8 @@ void* pblIteratorSet( /*                                                        
 			pbl_errno = PBL_ERROR_NOT_ALLOWED;
 			return retptr;
 		}
-
 		retptr = pblListSet((PblList*)iterator->collection, iterator->lastIndexReturned, element);
 	}
-
 	return retptr;
 }
 

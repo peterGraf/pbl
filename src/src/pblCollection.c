@@ -31,17 +31,18 @@
  please see: https://www.mission-base.com/.
 
  $Log: pblCollection.c,v $
+ Revision 1.22  2022/06/28 22:07:43  peter
+ Reformatting and clean up
+
  Revision 1.21  2021/06/23 14:32:49  peter
  Switch to MIT license
-
- Revision 1.20  2021/06/12 22:53:22  peter
 
  */
 
  /*
   * Make sure "strings <exe> | grep Id | sort -u" shows the source file versions
   */
-char* pblCollection_c_id = "$Id: pblCollection.c,v 1.21 2021/06/23 14:32:49 peter Exp $";
+char* pblCollection_c_id = "$Id: pblCollection.c,v 1.22 2022/06/28 22:07:43 peter Exp $";
 
 #include <stdio.h>
 #include <memory.h>
@@ -216,16 +217,13 @@ void* pblCollectionSetCompareFunction( /*                                     */
 		) /*                                                                  */
 )
 {
-	void* retptr = collection->compare;
-
 	if (collection->size > 0)
 	{
 		pbl_errno = PBL_ERROR_PARAM_COLLECTION;
 		return (void*)-1;
 	}
-
+	void* retptr = collection->compare;
 	collection->compare = compare;
-
 	return retptr;
 }
 
@@ -301,7 +299,6 @@ PblList* pblCollectionConvertToArrayList( /*                */
 		pblListFree(list);
 		return NULL;
 	}
-
 	return list;
 }
 
@@ -354,7 +351,6 @@ PblSet* pblCollectionConvertToHashSet( /*                                     */
 		pblSetFree(set);
 		return NULL;
 	}
-
 	return set;
 }
 
@@ -389,7 +385,6 @@ PblList* pblCollectionConvertToLinkedList( /*               */
 		pblListFree(list);
 		return NULL;
 	}
-
 	return list;
 }
 
@@ -426,7 +421,6 @@ PblSet* pblCollectionConvertToTreeSet( /*                   */
 		pblSetFree(set);
 		return NULL;
 	}
-
 	return set;
 }
 
@@ -506,7 +500,5 @@ int pblCollectionAggregate( /*                                                  
 		//
 		return -1;
 	}
-
 	return 0;
 }
-

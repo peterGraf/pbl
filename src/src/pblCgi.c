@@ -30,19 +30,17 @@
  please see: https://www.mission-base.com/.
 
 $Log: pblCgi.c,v $
+Revision 1.61  2022/08/11 20:52:14  peter
+Cleanup time formatting
+
 Revision 1.60  2022/01/23 21:50:56  peter
 Rename to array indexof
-
-Revision 1.59  2021/10/28 20:16:14  peter
-Added pblCgiStrIsNullOrEmpty()
-
-Revision 1.58  2021/09/20 22:55:03  peter
 
  */
  /*
   * Make sure "strings <exe> | grep Id | sort -u" shows the source file versions
   */
-char* pblCgi_c_id = "$Id: pblCgi.c,v 1.60 2022/01/23 21:50:56 peter Exp $";
+char* pblCgi_c_id = "$Id: pblCgi.c,v 1.61 2022/08/11 20:52:14 peter Exp $";
 
 #include <stdio.h>
 #include <memory.h>
@@ -778,21 +776,11 @@ char* pblCgiStrReplace(char* string, char* oldValue, char* newValue)
 }
 
 /**
- * Return a malloced time string.
- *
- * If an error occurs, the program exits with an error message.
- */
-char* pblCgiStrFromTime(time_t t)
-{
-	return pblCgiStrFromTimeAndFormat(t, "%02d.%02d.%02d %02d:%02d:%02d");
-}
-
-/**
 * Return a malloced time string.
 *
 * If an error occurs, the program exits with an error message.
 */
-char* pblCgiStrFromTimeAndFormat(time_t t, char* format)
+static char* pblCgiStrFromTimeAndFormat(time_t t, char* format)
 {
 	struct tm* tm;
 
@@ -809,6 +797,26 @@ char* pblCgiStrFromTimeAndFormat(time_t t, char* format)
 #endif
 	return pblCgiSprintf(format, (tm->tm_year + 1900) % 100, tm->tm_mon + 1, tm->tm_mday,
 		tm->tm_hour, tm->tm_min, tm->tm_sec);
+}
+
+/**
+ * Return a malloced time string without blanks.
+ *
+ * If an error occurs, the program exits with an error message.
+ */
+char* pblCgiStrFromTimeNoBlanks(time_t t)
+{
+	return pblCgiStrFromTimeAndFormat(t, "%02d%02d%02d%02d%02d%02d");
+}
+
+/**
+ * Return a malloced time string.
+ *
+ * If an error occurs, the program exits with an error message.
+ */
+char* pblCgiStrFromTime(time_t t)
+{
+	return pblCgiStrFromTimeAndFormat(t, "%02d.%02d.%02d %02d:%02d:%02d");
 }
 
 /**

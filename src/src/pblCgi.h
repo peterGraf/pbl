@@ -32,13 +32,11 @@
  please see: https://www.mission-base.com/.
 
 $Log: pblCgi.h,v $
+Revision 1.40  2022/08/11 20:52:14  peter
+Cleanup time formatting
+
 Revision 1.39  2022/01/23 21:50:56  peter
 Rename to array indexof
-
-Revision 1.38  2021/10/28 20:16:15  peter
-Added pblCgiStrIsNullOrEmpty()
-
-Revision 1.37  2021/09/20 22:55:03  peter
 
  */
 
@@ -144,8 +142,8 @@ extern "C"
 	extern int pblCgiStrCmp(char* s1, char* s2);
 	extern char* pblCgiStrCat(char* s1, char* s2);
 	extern char* pblCgiStrReplace(char* string, char* oldValue, char* newValue);
-	extern char* pblCgiStrFromTimeAndFormat(time_t t, char* format);
 	extern char* pblCgiStrFromTime(time_t t);
+	extern char* pblCgiStrFromTimeNoBlanks(time_t t);
 	extern int pblCgiStrSplit(char* string, char* splitString, size_t size, char* result[]);
 	extern PblList* pblCgiStrSplitToList(char* string, char* splitString);
 	extern char* pblCgiStrToHexFromBuffer(unsigned char* buffer, size_t length);

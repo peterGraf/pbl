@@ -1,0 +1,22 @@
+﻿  pbl.c
+  pblCgi.c
+C:\Users\Peter\GitHub\pbl\src\src\pblCgi.c(442,10): warning C4477: 'printf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 2 has type 'unsigned __int64'
+C:\Users\Peter\GitHub\pbl\src\src\pblCgi.c(442,10): message : consider using '%llu' in the format string
+C:\Users\Peter\GitHub\pbl\src\src\pblCgi.c(442,10): message : consider using '%Iu' in the format string
+C:\Users\Peter\GitHub\pbl\src\src\pblCgi.c(442,10): message : consider using '%I64u' in the format string
+C:\Users\Peter\GitHub\pbl\src\src\pblCgi.c(594,1): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+C:\Users\Peter\GitHub\pbl\src\src\pblCgi.c(736,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Peter\GitHub\pbl\src\src\pblCgi.c(1122,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Peter\GitHub\pbl\src\src\pblCgi.c(1534,1): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  pblCollection.c
+  pblhash.c
+  pblHeap.c
+  pblIterator.c
+  pblList.c
+  pblListTest.c
+  pblMap.c
+  pblPriorityQueue.c
+  pblSet.c
+  pblStringBuilder.c
+  Generating Code...
+  pblMaster.vcxproj -> C:\Users\Peter\GitHub\pbl\pblMaster\x64\Debug\pblMaster.exe

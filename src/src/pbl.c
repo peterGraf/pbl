@@ -34,7 +34,6 @@
    Switch to MIT license
 
    Revision 1.21  2021/06/23 13:39:52  peter
-
 */
 /*
  * Make sure "strings <exe> | grep Id | sort -u" shows the source file versions
@@ -58,19 +57,15 @@ static char pbl_errbuf[PBL_ERRSTR_LEN + 1];
 int    pbl_errno;
 char* pbl_errstr = pbl_errbuf;
 
-/*****************************************************************************/
-/* Functions                                                                 */
-/*****************************************************************************/
-
 /**
   * Replacement for malloc().
   *
-  * @return  void * retptr == NULL: OUT OF MEMORY
-  * @return  void * retptr != NULL: pointer to buffer allocated
+  * @return void* retptr == NULL: OUT OF MEMORY
+  * @return void* retptr != NULL: pointer to buffer allocated
   */
 void* pbl_malloc(
-	char* tag,           /** tag used for memory leak detection */
-	size_t   size        /** number of bytes to allocate        */
+	char* tag,  /** tag used for memory leak detection */
+	size_t size /** number of bytes to allocate */
 )
 {
 	if (!tag)
@@ -94,12 +89,12 @@ void* pbl_malloc(
 /**
   * Replacement for malloc(), initializes the memory to 0.
   *
-  * @return  void * retptr == NULL: OUT OF MEMORY
-  * @return  void * retptr != NULL: pointer to buffer allocated
+  * @return void* retptr == NULL: OUT OF MEMORY
+  * @return void* retptr != NULL: pointer to buffer allocated
   */
 void* pbl_malloc0(
-	char* tag,           /** tag used for memory leak detection */
-	size_t   size        /** number of bytes to allocate        */
+	char* tag,  /** tag used for memory leak detection */
+	size_t size /** number of bytes to allocate */
 )
 {
 	if (!tag)
@@ -125,13 +120,13 @@ void* pbl_malloc0(
 /**
   * Duplicate a buffer, similar to strdup().
   *
-  * @return  void * retptr == NULL: OUT OF MEMORY
-  * @return  void * retptr != NULL: pointer to buffer allocated
+  * @return void* retptr == NULL: OUT OF MEMORY
+  * @return void* retptr != NULL: pointer to buffer allocated
   */
 void* pbl_memdup(
-	char* tag,         /** tag used for memory leak detection */
-	void* data,        /** buffer to duplicate                */
-	size_t size        /** size of that buffer                */
+	char* tag,  /** tag used for memory leak detection */
+	void* data, /** buffer to duplicate */
+	size_t size /** size of that buffer */
 )
 {
 	if (!tag)
@@ -150,12 +145,12 @@ void* pbl_memdup(
 /**
   * Duplicate a string, similar to strdup().
   *
-  * @return  void * retptr == NULL: OUT OF MEMORY
-  * @return  void * retptr != NULL: pointer to buffer allocated
+  * @return void* retptr == NULL: OUT OF MEMORY
+  * @return void* retptr != NULL: pointer to buffer allocated
   */
 void* pbl_strdup(
-	char* tag,        /** tag used for memory leak detection */
-	char* data        /** string to duplicate                */
+	char* tag, /** tag used for memory leak detection */
+	char* data /** string to duplicate */
 )
 {
 	if (!tag)
@@ -173,11 +168,11 @@ void* pbl_strdup(
   * @return  void * retptr != NULL: pointer to new buffer allocated
   */
 void* pbl_mem2dup(
-	char* tag,         /** tag used for memory leak detection */
-	void* mem1,        /** first buffer to duplicate          */
-	size_t len1,       /** length of first buffer             */
-	void* mem2,        /** second buffer to duplicate         */
-	size_t len2        /** length of second buffer            */
+	char* tag,   /** tag used for memory leak detection */
+	void* mem1,  /** first buffer to duplicate          */
+	size_t len1, /** length of first buffer             */
+	void* mem2,  /** second buffer to duplicate         */
+	size_t len2  /** length of second buffer            */
 )
 {
 	if (!tag)
@@ -204,13 +199,13 @@ void* pbl_mem2dup(
 /**
  * Replacement for memcpy with target length check.
  *
- * @return   size_t rc: number of bytes copied
+ * @return size_t rc: number of bytes copied
  */
 size_t pbl_memlcpy(
-	void* to,           /** target buffer to copy to                             */
-	size_t tolen,       /** number of bytes in the target buffer                 */
-	void* from,         /** source to copy from                                  */
-	size_t n            /** length of source                                     */
+	void* to,     /** target buffer to copy to             */
+	size_t tolen, /** number of bytes in the target buffer */
+	void* from,   /** source to copy from                  */
+	size_t n      /** length of source                     */
 )
 {
 	size_t l = n > tolen ? tolen : n;
@@ -222,13 +217,13 @@ size_t pbl_memlcpy(
 /**
  * Find out how many starting bytes of two buffers are equal.
  *
- * @return   int rc: number of equal bytes
+ * @return int rc: number of equal bytes
  */
 int pbl_memcmplen(
-	void* left,     /** first buffer for compare               */
-	size_t llen,    /** length of that buffer                  */
-	void* right,    /** second buffer for compare              */
-	size_t rlen     /** length of that buffer                  */
+	void* left,  /** first buffer for compare  */
+	size_t llen, /** length of that buffer     */
+	void* right, /** second buffer for compare */
+	size_t rlen  /** length of that buffer     */
 )
 {
 	unsigned int i;
@@ -254,15 +249,15 @@ int pbl_memcmplen(
 /**
  * Compare two memory buffers, similar to memcmp.
  *
- * @return   int rc  < 0: left is smaller than right
- * @return   int rc == 0: left and right are equal
- * @return   int rc  > 0: left is bigger than right
+ * @return int rc  < 0: left is smaller than right
+ * @return int rc == 0: left and right are equal
+ * @return int rc  > 0: left is bigger than right
  */
 int pbl_memcmp(
-	void* left,     /** first buffer for compare               */
-	size_t llen,    /** length of that buffer                  */
-	void* right,    /** second buffer for compare              */
-	size_t rlen     /** length of that buffer                  */
+	void* left,  /** first buffer for compare  */
+	size_t llen, /** length of that buffer     */
+	void* right, /** second buffer for compare */
+	size_t rlen  /** length of that buffer     */
 )
 {
 	size_t len;
@@ -315,12 +310,12 @@ int pbl_memcmp(
  * Copy a two byte short to a two byte buffer.
  */
 void pbl_ShortToBuf(
-	unsigned char* buf,        /** buffer to copy to                 */
-	int s                       /** short value to copy               */
+	unsigned char* buf, /** buffer to copy to */
+	int s               /** short value to copy */
 )
 {
-	*buf++ = (unsigned char)(s >> 8);
-	*buf = (unsigned char)(s);
+	buf[0] = (unsigned char)(s >> 8);
+	buf[1] = (unsigned char)(s);
 }
 
 /**
@@ -329,64 +324,41 @@ void pbl_ShortToBuf(
  * @return int rc: the short value read
  */
 int pbl_BufToShort(
-	unsigned char* buf            /** buffer to read from      */
+	unsigned char* buf /** buffer to read from */
 )
 {
-	unsigned int s = ((unsigned int)(*buf++)) << 8;
-
-	s |= *buf;
-	return s;
+	return (buf[0] << 8) | buf[1];
 }
-
-#define PBL_BUFTOSHORT( PTR ) ((( 0 | PTR[ 0 ]) << 8) | PTR[ 1 ] )
 
 /**
  * Copy a four byte long to a buffer as hex string like "0f0f0f0f".
  */
 void pbl_LongToHexString(
-	unsigned char* buf,         /** buffer to copy to                 */
-	unsigned long l             /** long value to copy                */
+	unsigned char* buf, /** buffer to copy to */
+	unsigned long l     /** long value to copy */
 )
 {
-	int c;
-	int i;
-
-	buf[8] = 0;
-
-	for (i = 8; i > 0; )
+	static const char hex_digits[] = "0123456789abcdef";
+	for (int i = 7; i >= 0; --i)
 	{
-		if (!l)
-		{
-			memcpy(buf, "00000000", i);
-			return;
-		}
-
-		c = l & 0xf;
-		l = l >> 4;
-
-		if (c <= 9)
-		{
-			buf[--i] = '0' + c;
-		}
-		else
-		{
-			buf[--i] = 'a' + (c - 10);
-		}
+		buf[i] = hex_digits[l & 0xf];
+		l >>= 4;
 	}
+	buf[8] = '\0';
 }
 
 /**
  * Copy a four byte long to a four byte buffer.
  */
 void pbl_LongToBuf(
-	unsigned char* buf,         /** buffer to copy to                 */
-	long l                      /** long value to copy                */
+	unsigned char* buf, /** buffer to copy to */
+	long l              /** long value to copy */
 )
 {
-	*buf++ = (unsigned char)((l >> 24));
-	*buf++ = (unsigned char)((l >> 16));
-	*buf++ = (unsigned char)((l >> 8));
-	*buf = (unsigned char)(l);
+	buf[0] = (unsigned char)(l >> 24);
+	buf[1] = (unsigned char)(l >> 16);
+	buf[2] = (unsigned char)(l >> 8);
+	buf[3] = (unsigned char)(l);
 }
 
 /**
@@ -395,14 +367,13 @@ void pbl_LongToBuf(
  * @return long rc: the long value read
  */
 long pbl_BufToLong(
-	unsigned char* buf        /** the buffer to read from   */
+	unsigned char* buf /** the buffer to read from */
 )
 {
-	unsigned long l = (((unsigned long)(*buf++))) << 24;
-
-	l |= (((unsigned long)(*buf++))) << 16;
-	l |= (((unsigned long)(*buf++))) << 8;
-	return l | *buf;
+	return ((unsigned long)buf[0] << 24) |
+		((unsigned long)buf[1] << 16) |
+		((unsigned long)buf[2] << 8) |
+		(unsigned long)buf[3];
 }
 
 /**
@@ -414,32 +385,35 @@ int pbl_LongToVarBuf(unsigned char* buffer, unsigned long value)
 {
 	if (value <= 0x7f)
 	{
-		*buffer = (unsigned char)value;
+		buffer[0] = (unsigned char)value;
 		return 1;
 	}
 	if (value <= 0x3fff)
 	{
-		*buffer++ = (unsigned char)(value / 0x100) | 0x80;
-		*buffer = (unsigned char)value & 0xff;
+		buffer[0] = (unsigned char)((value >> 8) | 0x80);
+		buffer[1] = (unsigned char)value;
 		return 2;
 	}
 	if (value <= 0x1fffff)
 	{
-		*buffer++ = (unsigned char)(value / 0x10000) | 0x80 | 0x40;
-		*buffer++ = (unsigned char)(value / 0x100);
-		*buffer = (unsigned char)value & 0xff;
+		buffer[0] = (unsigned char)((value >> 16) | 0x80 | 0x40);
+		buffer[1] = (unsigned char)(value >> 8);
+		buffer[2] = (unsigned char)value;
 		return 3;
 	}
 	if (value <= 0x0fffffff)
 	{
-		*buffer++ = (unsigned char)(value / 0x1000000) | 0x80 | 0x40 | 0x20;
-		*buffer++ = (unsigned char)(value / 0x10000);
-		*buffer++ = (unsigned char)(value / 0x100);
-		*buffer = (unsigned char)value & 0xff;
+		buffer[0] = (unsigned char)((value >> 24) | 0x80 | 0x40 | 0x20);
+		buffer[1] = (unsigned char)(value >> 16);
+		buffer[2] = (unsigned char)(value >> 8);
+		buffer[3] = (unsigned char)value;
 		return 4;
 	}
-	*buffer++ = (unsigned char)0xf0;
-	pbl_LongToBuf(buffer, value);
+	buffer[0] = (unsigned char)0xf0;
+	buffer[1] = (unsigned char)(value >> 24);
+	buffer[2] = (unsigned char)(value >> 16);
+	buffer[3] = (unsigned char)(value >> 8);
+	buffer[4] = (unsigned char)value;
 	return 5;
 }
 
@@ -449,8 +423,8 @@ int pbl_LongToVarBuf(unsigned char* buffer, unsigned long value)
  * @return int rc: the number of bytes used in the buffer
  */
 int pbl_VarBufToLong(
-	unsigned char* buffer,    /** buffer to read from                 */
-	unsigned long* value      /** long to read to                     */
+	unsigned char* buffer, /** buffer to read from */
+	unsigned long* value   /** long to read to */
 )
 {
 	int c = 0xff & *buffer++;
@@ -492,7 +466,7 @@ int pbl_VarBufToLong(
  * @return int rc: number of bytes used in buffer
  */
 int pbl_LongSize(
-	unsigned long value               /** value to check          */
+	unsigned long value /** value to check */
 )
 {
 	if (value <= 0x7f)
@@ -520,7 +494,7 @@ int pbl_LongSize(
  * @return int rc: number of bytes used in buffer
  */
 int pbl_VarBufSize(
-	unsigned char* buffer   /** buffer to check                  */
+	unsigned char* buffer /** buffer to check */
 )
 {
 	int c = 0xff & *buffer;

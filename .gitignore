@@ -34,3 +34,5 @@ src/src/pblStringBuilder.o
 pblMaster/pblMaster/x64
 pblMaster/x64/Debug
 
+/pblMaster/x64/Debug/pblMaster.exe
+/pblMaster/x64/Debug/pblMaster.pdb

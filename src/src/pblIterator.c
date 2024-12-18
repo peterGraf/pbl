@@ -43,7 +43,6 @@
   * Make sure "strings <exe> | grep Id | sort -u" shows the source file versions
   */
 char* pblIterator_c_id = "$Id: pblIterator.c,v 1.17 2022/06/28 22:07:43 peter Exp $";
-
 char* PblIteratorMagic = "PblIteratorMagic";
 
 #include <stdio.h>
@@ -62,18 +61,14 @@ char* PblIteratorMagic = "PblIteratorMagic";
  */
 typedef struct PblTreeIterator_s
 {
-	char* magic; /* The magic string of iterators                           */
+	char* magic;                 /* The magic string of iterators           */
 	unsigned long changeCounter; /* The number of changes on the collection */
-	PblCollection* collection; /* The collection the iterator works on      */
-	int index; /* The current index of the iterator                         */
-
-	int lastIndexReturned; /* Index of element that was returned last       */
-
-	PblTreeNode* current; /* The current node in the tree set               */
-
-	PblTreeNode* prev; /* The previous node in the tree set                 */
-	PblTreeNode* next; /* The next node in the tree set                     */
-
+	PblCollection* collection;   /* The collection the iterator works on    */
+	int index;                   /* The current index of the iterator       */
+	int lastIndexReturned;       /* Index of element that was returned last */
+	PblTreeNode* current;        /* The current node in the tree set        */
+	PblTreeNode* prev;           /* The previous node in the tree set       */
+	PblTreeNode* next;           /* The next node in the tree set           */
 } PblTreeIterator;
 
 /*
@@ -81,18 +76,14 @@ typedef struct PblTreeIterator_s
  */
 typedef struct PblHashIterator_s
 {
-	char* magic; /* The magic string of iterators                           */
+	char* magic;                 /* The magic string of iterators           */
 	unsigned long changeCounter; /* The number of changes on the collection */
-	PblCollection* collection; /* The collection the iterator works on      */
-	int index; /* The current index of the iterator                         */
-
-	int lastIndexReturned; /* Index of element that was returned last       */
-
-	void** current; /* The current element in the hash                      */
-
-	void** prev; /* The previous element in the hash                        */
-	void** next; /* The next element in the hash                            */
-
+	PblCollection* collection;   /* The collection the iterator works on    */
+	int index;                   /* The current index of the iterator       */
+	int lastIndexReturned;       /* Index of element that was returned last */
+	void** current;              /* The current element in the hash         */
+	void** prev;                 /* The previous element in the hash        */
+	void** next;                 /* The next element in the hash            */
 } PblHashIterator;
 
 /**
@@ -121,7 +112,7 @@ typedef struct PblHashIterator_s
  * <BR>PBL_ERROR_OUT_OF_MEMORY       - Out of memory.
  * <BR>PBL_ERROR_PARAM_COLLECTION    - The collection cannot be iterated.
  */
-PblIterator* pblIteratorNew( /*                                             */
+PblIterator* pblIteratorNew(
 	PblCollection* collection /** The collection to create the iterator for */
 )
 {
@@ -167,9 +158,9 @@ PblIterator* pblIteratorNew( /*                                             */
  *
  * <BR>PBL_ERROR_PARAM_COLLECTION    - The collection cannot be iterated.
  */
-int pblIteratorInit( /*                                                      */
+int pblIteratorInit(
 	PblCollection* collection, /** The collection to create the iterator for */
-	PblIterator* iterator /** The iterator to initialize                     */
+	PblIterator* iterator      /** The iterator to initialize                */
 )
 {
 	if (!PBL_COLLECTION_IS_COLLECTION(collection))
@@ -236,7 +227,7 @@ int pblIteratorInit( /*                                                      */
  * <BR>PBL_ERROR_OUT_OF_MEMORY      - Out of memory.
  * <BR>PBL_COLLECTION_IS_COLLECTION - The collection cannot be iterated.
  */
-PblIterator* pblIteratorReverseNew( /*                                      */
+PblIterator* pblIteratorReverseNew(
 	PblCollection* collection /** The collection to create the iterator for */
 )
 {
@@ -285,9 +276,9 @@ PblIterator* pblIteratorReverseNew( /*                                      */
  *
  * <BR>PBL_ERROR_PARAM_COLLECTION - The collection cannot be iterated.
  */
-int pblIteratorReverseInit( /*                                               */
+int pblIteratorReverseInit(
 	PblCollection* collection, /** The collection to create the iterator for */
-	PblIterator* iterator /** The iterator to initialize                     */
+	PblIterator* iterator      /** The iterator to initialize                */
 )
 {
 	if (!PBL_COLLECTION_IS_COLLECTION(collection))
@@ -343,7 +334,7 @@ int pblIteratorReverseInit( /*                                               */
  * <BR>PBL_ERROR_CONCURRENT_MODIFICATION - The underlying collection was modified concurrently.
  *
  */
-int pblIteratorHasPrevious( /*                                               */
+int pblIteratorHasPrevious(
 	PblIterator* iterator /** The iterator to check the previous element for */
 )
 {
@@ -374,7 +365,7 @@ int pblIteratorHasPrevious( /*                                               */
  *
  * <BR>PBL_ERROR_CONCURRENT_MODIFICATION - The underlying collection was modified concurrently.
  */
-int pblIteratorHasNext( /*                                            */
+int pblIteratorHasNext(
 	PblIterator* iterator /** The iterator to check the next element for */
 )
 {
@@ -407,7 +398,7 @@ int pblIteratorHasNext( /*                                            */
  * <BR>PBL_ERROR_NOT_FOUND               - The iteration has no more elements.
  * <BR>PBL_ERROR_CONCURRENT_MODIFICATION - The underlying collection was modified concurrently.
  */
-void* pblIteratorNext( /*                                                 */
+void* pblIteratorNext(
 	PblIterator* iterator /** The iterator to return the next element for */
 )
 {
@@ -501,7 +492,7 @@ void* pblIteratorNext( /*                                                 */
  * <BR>PBL_ERROR_NOT_FOUND               - The iteration has no more elements.
  * <BR>PBL_ERROR_CONCURRENT_MODIFICATION - The underlying collection was modified concurrently.
  */
-void* pblIteratorPrevious( /*                                                 */
+void* pblIteratorPrevious(
 	PblIterator* iterator /** The iterator to return the previous element for */
 )
 {
@@ -606,9 +597,9 @@ void* pblIteratorPrevious( /*                                                 */
  * <BR>PBL_ERROR_CONCURRENT_MODIFICATION - The underlying list was modified concurrently.
  * <BR>PBL_ERROR_PARAM_LIST              - The underlying collection is not a list.
  */
-int pblIteratorAdd( /*                                            */
+int pblIteratorAdd(
 	PblIterator* iterator, /** The iterator to add the element to */
-	void* element /** Element to be added to this list            */
+	void* element          /** Element to be added to this list   */
 )
 {
 	PblList* list = (PblList*)iterator->collection;
@@ -709,7 +700,7 @@ int pblIteratorAdd( /*                                            */
  * <BR>PBL_ERROR_CONCURRENT_MODIFICATION - The underlying list or tree set was modified concurrently.
  * <BR>PBL_ERROR_PARAM_LIST              - The underlying collection is neither a list nor a tree set.
  */
-int pblIteratorRemove( /*                                                  */
+int pblIteratorRemove(
 	PblIterator* iterator /** The iterator to remove the next element from */
 )
 {
@@ -818,7 +809,7 @@ int pblIteratorRemove( /*                                                  */
  * <BR>PBL_ERROR_CONCURRENT_MODIFICATION - The underlying list was modified concurrently.
  * <BR>PBL_ERROR_PARAM_LIST              - The underlying collection is not a list.
  */
-void* pblIteratorSet( /*                                                                          */
+void* pblIteratorSet(
 	PblIterator* iterator, /** The iterator to replace the element of                             */
 	void* element /** Element with which to replace the last element returned by next or previous */
 )
@@ -872,7 +863,7 @@ void* pblIteratorSet( /*                                                        
  * @return int rc: The index of the element that would be returned by a subsequent call to next,
  *                 or list size if list iterator is at end of list.
  */
-int pblIteratorNextIndex( /*                      */
+int pblIteratorNextIndex(
 	PblIterator* iterator /** The iterator to use */
 )
 {
@@ -889,7 +880,7 @@ int pblIteratorNextIndex( /*                      */
  * @return int rc: The index of the element that would be returned by a subsequent call to previous,
  *                 or -1 if list iterator is at beginning of list.
  */
-int pblIteratorPreviousIndex( /*                  */
+int pblIteratorPreviousIndex(
 	PblIterator* iterator /** The iterator to use */
 )
 {
@@ -903,7 +894,7 @@ int pblIteratorPreviousIndex( /*                  */
  *
  * @return int rc: The number of elements in the collection.
  */
-int pblIteratorSize( /*                           */
+int pblIteratorSize(
 	PblIterator* iterator /** The iterator to use */
 )
 {
@@ -917,7 +908,7 @@ int pblIteratorSize( /*                           */
  *
  * Must be called once the iterator is no longer needed.
  */
-void pblIteratorFree( /*                           */
+void pblIteratorFree(
 	PblIterator* iterator /** The iterator to free */
 )
 {

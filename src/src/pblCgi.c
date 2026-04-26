@@ -1507,7 +1507,7 @@ static char* pblCgiPrintStr(char* string, FILE* outStream, int iteration)
 		}
 		if (!memcmp(string, "<!--#ENDIF", 10))
 		{
-			ptr += 7;
+			ptr += 10;
 
 			char* ptr2 = strstr(ptr, "-->");
 			if (ptr2)
